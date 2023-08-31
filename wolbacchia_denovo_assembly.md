@@ -137,13 +137,14 @@ mkdir quast
 
 time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
 ```
+> Quast took me 8 minutes to run on 1 thread.
 
-While Quast is running, take some time to research the metrics it produces, and discuss as a group.
+Take some time to research the metrics and files QUAST produces, and discuss as a group.
 
 - [Quast Github](https://github.com/ablab/quast)
 - [Quast Manual](https://quast.sourceforge.net/docs/manual.html#sec2.1)
 
-What do these metrics tell us about the quality and completeness of our assembly?
+What do these metrics and outputs tell us about the quality and completeness of our assembly?
 
 ## Independent project and presentation
 
