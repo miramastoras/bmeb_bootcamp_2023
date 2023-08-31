@@ -4,9 +4,11 @@ This document contains instructions for generating a de-novo assembly of a wolba
 
 I recommend that you clone this repository to your local computer, and open up this document in a text editor. That way you can save any changes you make to the code in this tutorial (like file paths)
 
+> The output files for all steps in this tutorial can be found in the [bootcamp dropbox](https://www.dropbox.com/scl/fo/7cdhhpvc0vwxaawr36iff/h?rlkey=2o6mokx3yf5kkb3upymjab5yr&dl=0). If you get stuck and fall behind, feel free to use these files to move ahead.  
+
 ## 0. Log onto the hummingbird server and create a project directory
 
-You can access the hummingbird server with your UCSC username and Gold password. Please see the humming bird wiki on ["Getting Started"](https://hummingbird.ucsc.edu/getting-started/) for more details. (Feel free to run this analysis on your local computer if you prefer, but note that we may not be familiar with your operating system and be able to help as much.)
+You can access the hummingbird server with your UCSC username and Gold password. Please see the humming bird wiki on ["Getting Started"](https://hummingbird.ucsc.edu/getting-started/) for more details. (Feel free to run this analysis on your local computer if you prefer, but note that we may not be familiar with your operating system if you need help.)
 
 Open your terminal and type:
 ```
@@ -89,17 +91,53 @@ flye -h
 
 ## Running Flye assembler
 
-The [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) gives a whole list of all the possible parameters we can give Flye. You can also check these by running `flye -h` Please read through the section in the manual giving descriptions of these parameters [(here)](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md#-parameter-descriptions) and make sure you understand why this is the command we need to run:
+First, we need to combine all our fastq files into one file.
+```
+cd guppy_fastqs
+
+cat *.fastq.gz > merged.fastq.gz
+```
+
+The Flye [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) gives a whole list of all the possible parameters we can give Flye. You can also check these by running `flye -h` Please read through the section in the manual giving descriptions of these parameters [(here)](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md#-parameter-descriptions) and make sure you understand why this is the command we need to run:
 
 ```
 # create output directory
 mkdir flye
 
 # run flye assembler
-time flye --nano-hq /hb/home/mmastora/bootcamp2023/guppy_fastqs/ -t 1 --out-dir /hb/home/mmastora/flye/
+time flye --nano-hq /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 --out-dir /hb/home/mmastora/flye/
 ```
 
-## Independent project / presentation ideas
+When flye finishes, you'll notice it output three files: 
+
+## Assembly quality control
+
+We will use two tools to assess the quality of our assembly, Quast and Busco. We need to first install these tools in a new conda environment
+
+```
+conda deactivate flye_29
+
+conda create -n asm_eval -c bioconda quast busco
+conda activate asm_eval
+```
+
+
+While these tools are running, take some time to research the metrics they produce, and discuss in groups.
+
+- [Quast](https://github.com/ablab/quast)
+- [Busco](https://busco.ezlab.org/)
+
+Running Quast:
+```
+```
+Running Busco:
+```
+```
+
+What do these metrics tell us about the quality and completeness of our assembly?
+
+
+## Independent project and presentation
 
 For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbacchia data. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
 
@@ -107,13 +145,12 @@ We DO NOT expect everyone to come up with incredible groundbreaking results. The
 
 To get you started, we've come up with some project ideas you may use for the independent portion, but coming up with your own idea is highly encouraged! Follow your interests.
 
-##### Project ideas:
+#### Project ideas:
 
-- Run quality control on our assembly. What metrics are used to assess assembly quality?  
 - Run additional assemblers on our data and compare their performance. Is Flye the best assembler for our data?
 - Characterize the repetitive elements in our assembly (Hint: RepeatMasker)
 - Build a phylogeny with our Wolbacchia assembly and other species (Hint: USHER)
-- Comparative genomics: [Mauve](https://darlinglab.org/mauve/mauve.html), [Mummer](https://mummer.sourceforge.net/)
+- Comparative genomics: [Mauve](https://darlinglab.org/mauve/mauve.html), [Mummer](https://mummer.sourceforge.net) Are there interesting variations between our assembly and other relevant datasets?
 - Take the repeat graph produced by Flye and visualize it in [Bandage](https://github.com/rrwick/Bandage). What does this visualization show you about the repeat structure and quality of the assembly?
 
 
