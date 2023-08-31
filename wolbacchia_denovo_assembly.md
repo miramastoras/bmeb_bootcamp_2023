@@ -118,6 +118,8 @@ Take a look at the output of Flye. You should see the following files in your di
 20-repeat     assembly.fasta  assembly_info.txt
 ```
 
+Consult the Flye manual about what these files represent. Which one contains the assembly? Discuss these files as a group.
+
 ## Assembly quality control
 
 We will use the tool [Quast](https://quast.sourceforge.net/docs/manual.html#sec2.1) to assess the quality of our genome assembly.
@@ -136,14 +138,12 @@ mkdir quast
 time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
 ```
 
-While Quast is running, take some time to research the metrics it produces, and discuss in groups.
+While Quast is running, take some time to research the metrics it produces, and discuss as a group.
 
-- [Quast](https://github.com/ablab/quast)
-- [Busco](https://busco.ezlab.org/)
-
+- [Quast Github](https://github.com/ablab/quast)
+- [Quast Manual](https://quast.sourceforge.net/docs/manual.html#sec2.1)
 
 What do these metrics tell us about the quality and completeness of our assembly?
-
 
 ## Independent project and presentation
 
@@ -155,7 +155,7 @@ To get you started, we've come up with some project ideas you may use for the in
 
 #### Project ideas:
 
-- Run additional assemblers on our data and compare their performance. Is Flye the best assembler for our data?
+- Find additional assembly tools and run them on our data. Compare their quality against our Flye assembly. Which assembly tool produces the best quality assembly?
 - Implement an algorithm to walk along the repeat graph produced by Flye `assembly_graph.gfa` and produce an assembly sequence. Compare your assembly to the one Flye produces.
 - Characterize the repetitive elements in our assembly (Hint: RepeatMasker)
 - Build a phylogeny with our Wolbacchia assembly and other species (Hint: USHER)
