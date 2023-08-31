@@ -59,75 +59,44 @@ You should now have a new folder in your current directory titled `guppy_fastqs`
 ls guppy_fastqs/
 ```
 
-## 2. Install miniconda in your home directory.
+## 2. Create a conda environment for assembly.
 
-Now that we have our data, we need to install the assembler we are going to use, which is Flye. To install Flye, we're going to use the package manager conda.
+We need to install the Flye assembler onto hummingbird to run our assembly. We can do this using conda, which is already installed on hummingbird. If you are working on your own computer, you'll need to install conda. You can do this on the command line by downloading the conda installer [here](https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links), then running `bash <Miniconda_blah_blah.sh>`
 
-Go to [the conda website](https://docs.conda.io/en/latest/miniconda-other-installer-links.html). We need to install an earlier version of Miniconda3, because of an incompatibility with hummingbird. I used the version with python 3.8. Copy the link for `Miniconda3 Linux 64-bit` from the website.  
 
-Now, go back to your terminal and download the installer.  
+First, load conda
 ```
-# go back to home directory
-cd
-
-# create new folder for software
-mkdir progs
-cd progs
-
-# download miniconda
-wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.2-0-Linux-x86_64.sh
-
-# install
-bash Miniconda3-latest-Linux-x86_64.sh
-```
-Follow the prompts on the screen. You should see this message
-```
-Do you accept the license terms? [yes|no]
-[no] >>> yes
-
-Miniconda3 will now be installed into this location:
-/hb/home/mmastora/miniconda3
-
-  - Press ENTER to confirm the location
-  - Press CTRL-C to abort the installation
-  - Or specify a different location below
-
-[/hb/home/mmastora/miniconda3] >>>
-```
-It might take a couple of minutes. You'll know its installed when you see:
-```
-Thank you for installing Miniconda3!
-```
-## 3. Create a conda environment for assembly.
-
-First, load conda: (you will need to run this again every time you log onto hummingbird or open a new terminal screen. Replace my username with yours in the path.
-```
-source /hb/home/mmastora/miniconda3/etc/profile.d/conda.sh
+module load miniconda3.9
 ```
 
-Create a new conda environment for assembly
-```
-conda create -n assembly
-```
-Activate the assembly environment.
-```
-conda activate assembly
-```
+Now, we create a new conda environment and install the latest flye in it.
 
-You'll know you are in the assembly environment when you see this `(assembly)` at the beginning of your command prompt.
-
-Now, we will install Flye assembler into our assembly environment.
 ```
-conda install -c conda-forge tqdm
-conda install -c bioconda flye
+conda create -n flye_29 -c conda-forge -c bioconda flye=2.9
+```
+To activate this environment, run
+```
+conda activate flye_29
+```
+You'll know you have activated the environment if `(flye_29)` is at the beginning of your command prompt, like this
+```
+(flye_29) [mmastora@hb progs]$
+```
+You can test that flye works by running:
+```
+flye -h
 ```
 
 ## Running Flye assembler
 
-The [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) gives a whole list of all the possible parameters we can give Flye. You can also check these by running `flye -h` Please read through and make sure you understand why this is the command we need to run:
+The [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) gives a whole list of all the possible parameters we can give Flye. You can also check these by running `flye -h` Please read through the section in the manual giving descriptions of these parameters [(here)](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md#-parameter-descriptions) and make sure you understand why this is the command we need to run:
 
 ```
-flye --nano-corr /hb/home/mmastora/bootcamp2023/guppy_fastqs/ -t 1
+# create output directory
+mkdir flye
+
+# run flye assembler
+time flye --nano-hq /hb/home/mmastora/bootcamp2023/guppy_fastqs/ -t 1 --out-dir /hb/home/mmastora/flye/
 ```
 
 ## Independent project / presentation ideas
@@ -145,6 +114,7 @@ To get you started, we've come up with some project ideas you may use for the in
 - Characterize the repetitive elements in our assembly (Hint: RepeatMasker)
 - Build a phylogeny with our Wolbacchia assembly and other species (Hint: USHER)
 - Comparative genomics: [Mauve](https://darlinglab.org/mauve/mauve.html), [Mummer](https://mummer.sourceforge.net/)
+- Take the repeat graph produced by Flye and visualize it in [Bandage](https://github.com/rrwick/Bandage). What does this visualization show you about the repeat structure and quality of the assembly?
 
 
 ### Extra:
