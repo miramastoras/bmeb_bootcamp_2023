@@ -100,39 +100,47 @@ cat *.fastq.gz > merged.fastq.gz
 
 The Flye [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) gives a whole list of all the possible parameters we can give Flye. You can also check these by running `flye -h` Please read through the section in the manual giving descriptions of these parameters [(here)](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md#-parameter-descriptions) and make sure you understand why this is the command we need to run:
 
+> Note: Flye took me 43 minutes to run on 1 thread. Hummingbird has 48 threads available. Lets keep everyone to 1 thread `-t 1` so we don't completely take over hummingbird. I'd reccommend running this in a screen.
+
 ```
 # create output directory
 mkdir flye
 
 # run flye assembler
-time flye --nano-hq /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 --out-dir /hb/home/mmastora/flye/
+time flye --nano-hq /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 --out-dir /hb/home/mmastora/bootcamp2023/flye/
 ```
 
-When flye finishes, you'll notice it output three files: 
+Take a look at the output of Flye. You should see the following files in your directory
+```
+[mmastora@hb flye]$ ls
+00-assembly   30-contigger    assembly_graph.gfa  flye.log
+10-consensus  40-polishing    assembly_graph.gv   params.json
+20-repeat     assembly.fasta  assembly_info.txt
+```
 
 ## Assembly quality control
 
-We will use two tools to assess the quality of our assembly, Quast and Busco. We need to first install these tools in a new conda environment
+We will use the tool [Quast](https://quast.sourceforge.net/docs/manual.html#sec2.1) to assess the quality of our genome assembly.
 
+First, lets install it in a new conda environment
 ```
-conda deactivate flye_29
+module load miniconda3.9
 
-conda create -n asm_eval -c bioconda quast busco
-conda activate asm_eval
+conda create -n quast -c conda-forge -c bioconda quast
+```
+Running Quast:
+```
+conda activate quast
+mkdir quast
+
+time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
 ```
 
-
-While these tools are running, take some time to research the metrics they produce, and discuss in groups.
+While Quast is running, take some time to research the metrics it produces, and discuss in groups.
 
 - [Quast](https://github.com/ablab/quast)
 - [Busco](https://busco.ezlab.org/)
 
-Running Quast:
-```
-```
-Running Busco:
-```
-```
 
 What do these metrics tell us about the quality and completeness of our assembly?
 
@@ -141,22 +149,16 @@ What do these metrics tell us about the quality and completeness of our assembly
 
 For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbacchia data. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
 
-We DO NOT expect everyone to come up with incredible groundbreaking results. The **worst thing you could do** would be to give up and not present anything, just because you couldn't get an analysis to work. Share your project idea, what you tried, what worked and what didn't, and what you learned from the project if you aren't able to get results for this independent portion.  
+We DO NOT expect everyone to come up with incredible groundbreaking results. The **worst thing you could do** would be to give up and not present anything, just because you couldn't get an analysis to work. Share your project idea, what you tried, what worked and what didn't, and what you learned from the project if you aren't able to get results for this independent portion.
 
 To get you started, we've come up with some project ideas you may use for the independent portion, but coming up with your own idea is highly encouraged! Follow your interests.
 
 #### Project ideas:
 
 - Run additional assemblers on our data and compare their performance. Is Flye the best assembler for our data?
+- Implement an algorithm to walk along the repeat graph produced by Flye `assembly_graph.gfa` and produce an assembly sequence. Compare your assembly to the one Flye produces.
 - Characterize the repetitive elements in our assembly (Hint: RepeatMasker)
 - Build a phylogeny with our Wolbacchia assembly and other species (Hint: USHER)
 - Comparative genomics: [Mauve](https://darlinglab.org/mauve/mauve.html), [Mummer](https://mummer.sourceforge.net) Are there interesting variations between our assembly and other relevant datasets?
 - Take the repeat graph produced by Flye and visualize it in [Bandage](https://github.com/rrwick/Bandage). What does this visualization show you about the repeat structure and quality of the assembly?
-
-
-### Extra:
-
-Sharing guppy files:
-```
-tar -zcvf guppy_fastqs.tar.gz guppy_fastqs
-```
+- Present an in depth dive into QUAST performance metrics. Generate informative plots about the quality of our assemblies. Can you find any other tools to evaluate the quality of our assembly?
