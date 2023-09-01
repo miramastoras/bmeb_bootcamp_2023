@@ -1,6 +1,6 @@
 # De-novo assembly of a Wolbachia genome
 
-This document contains instructions for generating a de-novo assembly of a wolbacchia genome for BMEB bootcamp 2023. This is part 1 of the computational portion of the bootcamp.
+This document contains instructions for generating a de-novo assembly of a wolbachia genome for BMEB bootcamp 2023. This is part 1 of the computational portion of the bootcamp.
 
 I recommend that you clone this repository to your local computer, and open up this document in a text editor. That way you can save any changes you make to the code in this tutorial (like file paths)
 
@@ -148,7 +148,7 @@ What do these metrics and outputs tell us about the quality and completeness of 
 
 ## Independent project and presentation
 
-For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbacchia data. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
+For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbachia data. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
 
 We DO NOT expect everyone to come up with incredible groundbreaking results. The **worst thing you could do** would be to give up and not present anything, just because you couldn't get an analysis to work. Share your project idea, what you tried, what worked and what didn't, and what you learned from the project if you aren't able to get results for this independent portion.
 
@@ -159,7 +159,7 @@ To get you started, we've come up with some project ideas you may use for the in
 - Find additional assembly tools and run them on our data. Compare their quality against our Flye assembly. Which assembly tool produces the best quality assembly?
 - Implement an algorithm to walk along the repeat graph produced by Flye `assembly_graph.gfa` and produce an assembly sequence. Compare your assembly to the one Flye produces.
 - Characterize the repetitive elements in our assembly (Hint: RepeatMasker)
-- Build a phylogeny with our Wolbacchia assembly and other species (Hint: USHER)
+- Build a phylogeny with our Wolbachia assembly and other species (Hint: USHER)
 - Comparative genomics: [Mauve](https://darlinglab.org/mauve/mauve.html), [Mummer](https://mummer.sourceforge.net) Are there interesting variations between our assembly and other relevant datasets?
 - Take the repeat graph produced by Flye and visualize it in [Bandage](https://github.com/rrwick/Bandage). What does this visualization show you about the repeat structure and quality of the assembly?
 - Present an in depth dive into QUAST performance metrics. Generate informative plots about the quality of our assemblies. Can you find any other tools to evaluate the quality of our assembly?
