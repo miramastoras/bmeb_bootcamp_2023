@@ -1,4 +1,4 @@
-# De-novo assembly of a Wolbacchia genome
+# De-novo assembly of a Wolbachia genome
 
 This document contains instructions for generating a de-novo assembly of a wolbacchia genome for BMEB bootcamp 2023. This is part 1 of the computational portion of the bootcamp.
 
