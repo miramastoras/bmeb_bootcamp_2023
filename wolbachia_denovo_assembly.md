@@ -154,7 +154,7 @@ What do these metrics and outputs tell us about the quality and completeness of 
 
 ## Independent project and presentation
 
-For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbachia data. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
+For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbachia data. You may use the assembly, the sequencing reads, or both. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
 
 We DO NOT expect everyone to come up with incredible groundbreaking results. The **worst thing you could do** would be to give up and not present anything, just because you couldn't get an analysis to work. Share your project idea, what you tried, what worked and what didn't, and what you learned from the project if you aren't able to get results for this independent portion.
 
