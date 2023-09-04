@@ -40,25 +40,31 @@ cd bootcamp2023
 
 The fastq files for our nanopore experiments are [located in this dropbox folder](https://www.dropbox.com/scl/fo/7cdhhpvc0vwxaawr36iff/h?rlkey=2o6mokx3yf5kkb3upymjab5yr&dl=0).
 
-The fastq files are in this file:
+The fastq files are in this file: `Wwil_fastq_v5.tar.gz`
 
-Copy the link to this file from the dropbox website. To download the files to hummingbird, go back to your terminal and type:
+Copy the link to this file from the dropbox website.
+
+To get the correct link, you need to select the box next to the file, click on the three dots icon at the top, then click on "Copy link"
+
+![dropbox_link](pics/dropbox_link.png)
+
+To download the files to hummingbird, go back to your terminal and type `wget -O Wwil_fastq_v5.tar.gz` then add a space and paste the link from dropbox. The command should look like this:
 
 ```
-wget -O guppy_fastqs.tar.gz <link from dropbox>
+wget -O Wwil_fastq_v5.tar.gz <link from dropbox>
 
 # example
-wget -O guppy_fastqs.tar.gz https://www.dropbox.com/scl/fi/2fak6z47pptalsvgwlpmn/guppy_fastqs.tar.gz?rlkey=zgz09zybc3upzqpo0ayd7e890&dl=0
+wget -O Wwil_fastq_v5.tar.gz https://www.dropbox.com/scl/fi/o1e00wivre76rv004036w/Wwil_fastq_v5.tar.gz?rlkey=urd8unwxfjev31qf721ed65s3&dl=0
 ```
 
 Check that the file is in your directory with `ls`. Now, uncompress it with:
 
 ```
-tar -zxvf guppy_fastqs.tar.gz
+tar -zxvf Wwil_fastq_v5.tar.gz
 ```
-You should now have a new folder in your current directory titled `guppy_fastqs`. You can confirm that the fastq files are inside of it with:
+You should now have a new folder in your current directory titled `Wwil_fastq`. You can confirm that the fastq files are inside of it with:
 ```
-ls guppy_fastqs/
+ls Wwil_fastq/
 ```
 
 ## 2. Create a conda environment for assembly.
@@ -93,7 +99,7 @@ flye -h
 
 First, we need to combine all our fastq files into one file.
 ```
-cd guppy_fastqs
+cd Wwil_fastq/
 
 cat *.fastq.gz > merged.fastq.gz
 ```
@@ -107,7 +113,7 @@ The Flye [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) g
 mkdir flye
 
 # run flye assembler
-time flye --nano-hq /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 --out-dir /hb/home/mmastora/bootcamp2023/flye/
+time flye --nano-hq /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.fastq.gz -t 1 --out-dir /hb/home/mmastora/bootcamp2023/flye/
 ```
 
 Take a look at the output of Flye. You should see the following files in your directory
@@ -135,7 +141,7 @@ Running Quast:
 conda activate quast
 mkdir quast
 
-time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/guppy_fastqs/merged.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
+time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
 ```
 > Quast took me 8 minutes to run on 1 thread.
 
@@ -144,7 +150,7 @@ Take some time to research the metrics and files QUAST produces, and discuss as 
 - [Quast Github](https://github.com/ablab/quast)
 - [Quast Manual](https://quast.sourceforge.net/docs/manual.html#sec2.1)
 
-What do these metrics and outputs tell us about the quality and completeness of our assembly?
+What do these metrics and outputs tell us about the quality and completeness of our assembly? Is our assembly "good" ?
 
 ## Independent project and presentation
 
