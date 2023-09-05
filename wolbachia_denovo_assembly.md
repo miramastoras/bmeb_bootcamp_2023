@@ -95,7 +95,7 @@ You can test that flye works by running:
 flye -h
 ```
 
-## Running Flye assembler
+## 3. Preprocessing data
 
 First, we need to combine all our fastq files into one file.
 ```
@@ -104,16 +104,38 @@ cd Wwil_fastq/
 cat *.fastq.gz > merged.fastq.gz
 ```
 
+We need to make sure to remove any duplicate fastq files from the sequencing reads, too.
+
+We can use `seqkit` for this. We're going to install it on hummingbird using conda.
+
+```
+conda install -c bioconda seqkit
+conda activate seqkit
+```
+
+Now run
+```
+seqkit rmdup merged.fastq.gz -o merged.rmdup.fastq.gz
+```
+
+## 4. Running Flye assembler
+
 The Flye [manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md) gives a whole list of all the possible parameters we can give Flye. You can also check these by running `flye -h` Please read through the section in the manual giving descriptions of these parameters [(here)](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md#-parameter-descriptions) and make sure you understand why this is the command we need to run:
 
 > Note: Flye took me 43 minutes to run on 1 thread. Hummingbird has 48 threads available. Lets keep everyone to 1 thread `-t 1` so we don't completely take over hummingbird. I'd reccommend running this in a screen.
 
 ```
-# create output directory
+# move back to your bootcamp2023 directory
+cd ../
+
+# create output directory for flye
 mkdir flye
 
+# activate conda environment
+conda activate flye_29
+
 # run flye assembler
-time flye --nano-hq /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.fastq.gz -t 1 --out-dir /hb/home/mmastora/bootcamp2023/flye/
+time flye --nano-hq /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.rmdup.fastq.gz -t 1 --out-dir /hb/home/mmastora/bootcamp2023/flye/
 ```
 
 Take a look at the output of Flye. You should see the following files in your directory
@@ -141,7 +163,7 @@ Running Quast:
 conda activate quast
 mkdir quast
 
-time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
+time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.rmdup.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
 ```
 > Quast took me 8 minutes to run on 1 thread.
 
