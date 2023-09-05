@@ -174,7 +174,7 @@ Take some time to research the metrics and figures that QUAST produces, and disc
 - [Quast Github](https://github.com/ablab/quast)
 - [Quast Manual](https://quast.sourceforge.net/docs/manual.html#sec2.1)
 
-I would reccommend downloading the quast output to your personal computer, so you can open all the figures it produces. To do this, open a new terminal window (on your personal computer,NOT on hummingbird) and run the following command (changing my username to yours)
+I would reccommend downloading the quast output to your personal computer, so you can open all the figures it produces. To do this, open a new terminal window (on your personal computer, NOT on hummingbird) and run the following command (changing my username to yours)
 
 ```
 scp -r mmastora@hb.ucsc.edu:/hb/home/mmastora/bootcamp2023/quast/ .
