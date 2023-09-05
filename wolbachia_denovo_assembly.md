@@ -148,6 +148,8 @@ Take a look at the output of Flye. You should see the following files in your di
 
 Consult the Flye manual about what these files represent. Which one contains the assembly? Discuss these files as a group.
 
+> Hint: take a look in `assembly_info.txt`
+
 ## Assembly quality control
 
 We will use the tool [Quast](https://quast.sourceforge.net/docs/manual.html#sec2.1) to assess the quality of our genome assembly.
@@ -163,16 +165,22 @@ Running Quast:
 conda activate quast
 mkdir quast
 
-time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.rmdup.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast
+time quast /hb/home/mmastora/bootcamp2023/flye/assembly.fasta --nanopore /hb/home/mmastora/bootcamp2023/Wwil_fastq/merged.rmdup.fastq.gz -t 1 -o /hb/home/mmastora/bootcamp2023/quast --circos --k-mer-stats --gene-finding --conserved-genes-finding --rna-finding --est-ref-size 1200000
 ```
 > Quast took me 8 minutes to run on 1 thread.
 
-Take some time to research the metrics and files QUAST produces, and discuss as a group.
+Take some time to research the metrics and figures that QUAST produces, and discuss as a group. Which ones are informative about the quality of our assembly?
 
 - [Quast Github](https://github.com/ablab/quast)
 - [Quast Manual](https://quast.sourceforge.net/docs/manual.html#sec2.1)
 
-What do these metrics and outputs tell us about the quality and completeness of our assembly? Is our assembly "good" ?
+I would reccommend downloading the quast output to your personal computer, so you can open all the figures it produces. To do this, open a new terminal window (on your personal computer,NOT on hummingbird) and run the following command (changing my username to yours)
+
+```
+scp -r mmastora@hb.ucsc.edu:/hb/home/mmastora/bootcamp2023/quast/ .
+```
+
+What do the metrics and plots output by Quast tell us about the quality and completeness of our assembly? Do we have enough information to say whether our assembly is "good"?
 
 ## Independent project and presentation
 
