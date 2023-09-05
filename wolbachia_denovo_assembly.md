@@ -150,7 +150,7 @@ Consult the Flye manual about what these files represent. Which one contains the
 
 > Hint: take a look in `assembly_info.txt`
 
-## Assembly quality control
+## 5. Assembly quality control
 
 We will use the tool [Quast](https://quast.sourceforge.net/docs/manual.html#sec2.1) to assess the quality of our genome assembly.
 
@@ -182,7 +182,7 @@ scp -r mmastora@hb.ucsc.edu:/hb/home/mmastora/bootcamp2023/quast/ .
 
 What do the metrics and plots output by Quast tell us about the quality and completeness of our assembly? Do we have enough information to say whether our assembly is "good"?
 
-## Independent project and presentation
+## 6. Independent project and presentation
 
 For the rest of bootcamp, your task is to find an interesting analysis to do with our Wolbachia data. You may use the assembly, the sequencing reads, or both. This is **purposefully open-ended**, to give you practice with developing your own question or hypothesis, figuring out the research steps necessary to answer it, executing those steps, and presenting your work to others.  
 
