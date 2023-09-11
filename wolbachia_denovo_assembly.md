@@ -38,7 +38,7 @@ cd bootcamp2023
 
 ## 1. Download fastq files produced by the Guppy basecaller
 
-The fastq files for our nanopore experiments are [located in this dropbox folder](https://www.dropbox.com/scl/fo/7cdhhpvc0vwxaawr36iff/h?rlkey=2o6mokx3yf5kkb3upymjab5yr&dl=0).
+The fastq files that were generated from the nanopore library you created are [located here](https://drive.google.com/file/d/1TUBd4KBGK3hSbWhtdb0XXP2xCzW7VucD/view?usp=drive_link). The fastq files from our preliminary nanopore experiments are [located in this dropbox folder](https://www.dropbox.com/scl/fo/7cdhhpvc0vwxaawr36iff/h?rlkey=2o6mokx3yf5kkb3upymjab5yr&dl=0). 
 
 The fastq files are in this file: `Wwil_fastq_v5.tar.gz`
 
