@@ -40,7 +40,7 @@ cd bootcamp2023
 
 The fastq files that were generated from the nanopore library you created are [located here](). The fastq files from our preliminary nanopore experiments are [located in this dropbox folder](https://www.dropbox.com/scl/fo/7cdhhpvc0vwxaawr36iff/h?rlkey=2o6mokx3yf5kkb3upymjab5yr&dl=0). 
 
-The fastq files are in this file: `Wwil_fastq_v5.tar.gz`
+The fastq files are in this file: `Wwil_fastq.tar.gz`
 
 Copy the link to this file from the dropbox website.
 
@@ -48,7 +48,7 @@ To get the correct link, you need to select the box next to the file, click on t
 
 ![dropbox_link](pics/dropbox_link.png)
 
-To download the files to hummingbird, go back to your terminal and type `wget -O Wwil_fastq_v5.tar.gz` then add a space and paste the link from dropbox. The command should look like this:
+To download the files to hummingbird, go back to your terminal and type `wget -O Wwil_fastq.tar.gz` then add a space and paste the link from dropbox. The command should look like this:
 
 ```
 wget -O Wwil_fastq.tar.gz <[link from dropbox]>
