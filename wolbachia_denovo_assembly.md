@@ -56,6 +56,15 @@ wget -O Wwil_fastq.tar.gz <[link from dropbox]>
 # example
 wget -O Wwil_fastq.tar.gz https://www.dropbox.com/scl/fi/o1e00wivre76rv004036w/Wwil_fastq.tar.gz?rlkey=urd8unwxfjev31qf721ed65s3&dl=0
 ```
+To upload files from your local machine, first download the files from Dropbox, open a new terminal session (not logged in to hummingbird) and then use the following command to copy files over to hummingbird. 
+
+```
+scp /path/to/file  <your_cruzid>@hb.ucsc.edu>:/path/to/destination/
+
+#example
+scp Downloads/Wwil_fastq.tar.gz jomojaco@hb.ucsc.edu:/home/bootcamp/
+```
+
 
 Check that the file is in your directory with `ls`. Now, uncompress it with:
 
