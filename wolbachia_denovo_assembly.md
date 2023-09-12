@@ -51,16 +51,16 @@ To get the correct link, you need to select the box next to the file, click on t
 To download the files to hummingbird, go back to your terminal and type `wget -O Wwil_fastq_v5.tar.gz` then add a space and paste the link from dropbox. The command should look like this:
 
 ```
-wget -O Wwil_fastq_v5.tar.gz <[link from dropbox](https://www.dropbox.com/scl/fi/ialnqncoapj194v3mq07h/bootcamp_filtered_fastq.tar.gz?rlkey=fhyat400y5cd7wjqsozzp6lyd&dl=0)>
+wget -O Wwil_fastq.tar.gz <[link from dropbox]>
 
 # example
-wget -O bootcamp_filtered_fastq.tar.gz https://www.dropbox.com/scl/fi/o1e00wivre76rv004036w/Wwil_fastq_v5.tar.gz?rlkey=urd8unwxfjev31qf721ed65s3&dl=0
+wget -O Wwil_fastq.tar.gz https://www.dropbox.com/scl/fi/o1e00wivre76rv004036w/Wwil_fastq.tar.gz?rlkey=urd8unwxfjev31qf721ed65s3&dl=0
 ```
 
 Check that the file is in your directory with `ls`. Now, uncompress it with:
 
 ```
-tar -zxvf Wwil_fastq_v5.tar.gz
+tar -zxvf Wwil_fastq.tar.gz
 ```
 You should now have a new folder in your current directory titled `Wwil_fastq`. You can confirm that the fastq files are inside of it with:
 ```
