@@ -69,7 +69,7 @@ scp Downloads/Wwil_fastq.tar.gz jomojaco@hb.ucsc.edu:/home/bootcamp/
 Check that the file is in your directory with `ls`. Now, uncompress it with:
 
 ```
-tar -zxvf Wwil_fastq.tar.gz
+tar -xvf Wwil_fastq.tar.gz
 ```
 You should now have a new folder in your current directory titled `Wwil_fastq`. You can confirm that the fastq files are inside of it with:
 ```
