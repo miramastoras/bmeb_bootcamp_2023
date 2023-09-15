@@ -134,6 +134,8 @@ So far you've created and made changes in your own personal repository. This is 
 
 We are going to be working on this repository https://github.com/hloucks/BootcampGitTutorial where we will clone the repo, create a new branch, then push our changes on the new branch. 
 
+Before you can push to this repo you will need to accept my invitation to join the repo. Check your notifications on github and accept the invitation to edit the BootcampGitTutorial repo.
+
 ```
 gh repo clone hloucks/BootcampGitTutorial
 
@@ -143,7 +145,7 @@ git checkout -b Namebranch
 # now you create a file with your name and add some text in the file 
 nano myname.txt 
 git add myname.txt
-git commit -m myname.txt
+git commit -m "My Name"
 
 # now push to the branch that you created 
 git push -u origin Namebranch
