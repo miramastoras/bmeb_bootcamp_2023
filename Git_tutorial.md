@@ -9,12 +9,15 @@ Once you have done that please add your github username to this [google sheet](h
 
 ## 1. Log in to [google cloud console](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjwju2Gkq2BAxX3NEQIHWNABa8QFnoECAcQAQ&url=https%3A%2F%2Fconsole.cloud.google.com%2F&usg=AOvVaw1GxwHR1WZnDu0xsR-djCrv&opi=89978449)
 
+In the upper right corner there is a small box with ">_" click on that and activate the cloud shell.
+
 ## 2. Create your directory 
 On the google cloud console command line, run the following commands. For the first part of this tutorial we are going to pretend that we are creating a repository for storing notes in a markdown file. This is a really great way of keeping a lab notebook that ensures everything is dated, and that it is stored remotely so if something happens to your laptop you don't lose your notes. 
 
 Here is an example of what my notes repo looks like 
 ![exampleRepo](pics/example_repo.png)
 
+Now make a directory and a notes file.
 ```
 mkdir notes
 cd notes/
@@ -28,12 +31,12 @@ BME Bootcamp git tutorial
 ```
 
 
-## 3. Configure git with your user information
+## 3. Configure git with your user information - sub your name in the quotes
 
 ```
-$ git config --global user.name "First Last"
+git config --global user.name "Firstname Lastname"
 
-$ git config --global user.email "user@domain"
+git config --global user.email "user@domain"
 ```
 
 ## 4. Initialize git and create the repository 
@@ -62,9 +65,7 @@ Click "Create Repository"
 
 ![new_repo](pics/new_repo.png)
 
-Now click the "<> Code" button and copy the HTTPS link for the repo given and sub it in for the URL in the command below 
-
-![copy_link](pics/http_link.png)
+Now copy the HTTPS link for the repo you've just created and sub it in for the URL in the command below 
 
 ```
 git remote add origin https://github.com/username/notes.git
@@ -80,7 +81,7 @@ This will save your login information so that you don't have to provide your cre
 Now we are finally ready to push our file to our new repo!  
 
 ```
-git push
+git push -u origin main
 ```
 
 Now refresh your github repo in the browser, you should be able to see your file in the browser and look at it. 
