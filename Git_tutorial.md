@@ -137,7 +137,10 @@ We are going to be working on this repository https://github.com/hloucks/Bootcam
 Before you can push to this repo you will need to accept my invitation to join the repo. Check your notifications on github and accept the invitation to edit the BootcampGitTutorial repo.
 
 ```
+cd
 gh repo clone hloucks/BootcampGitTutorial
+cd BootcampGitTutorial
+
 
 # create a new branch with your name 
 git checkout -b Namebranch
